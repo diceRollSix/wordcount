@@ -20,7 +20,7 @@ func main() {
 	srcRunes := []rune(src)
 	//fmt.Println(srcRunes)
 
-	space := rune(' ')
+	space := ' '
 	prevChar := space
 	countWords := 0
 	for _, val := range srcRunes {
