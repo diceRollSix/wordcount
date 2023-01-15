@@ -1,19 +1,13 @@
 package main
 
 import (
-	"errors"
 	"flag"
 	"fmt"
-	"os"
 	"strings"
 )
 
 func main() {
-	src, err := readInput()
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	src := readInput()
 	//fmt.Printf("%#v", src)
 	//fmt.Println()
 
@@ -30,14 +24,14 @@ func main() {
 		prevChar = val
 	}
 
+	if prevChar != space {
+		countWords++
+	}
+
 	fmt.Println(countWords)
 }
 
-func readInput() (src string, err error) {
+func readInput() string {
 	flag.Parse()
-	src = strings.Join(flag.Args(), "")
-	if src == "" {
-		return src, errors.New("missing string to match")
-	}
-	return src, nil
+	return strings.Join(flag.Args(), "")
 }
